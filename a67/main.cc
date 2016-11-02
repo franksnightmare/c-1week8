@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 	// Matrix matrix4(matrix3.transpose());
 
 	Matrix mat(4, 6);
-	memcpy(&mat[2], &mat[1], 6 * sizeof(double));
+	memcpy(mat[2], mat[1], 6 * sizeof(double));
 	mat[2][3] = 23.5;
 	// Causes an error, column too big/small.
 	//Matrix matrix5({{1, 2, 3}, {4, 5, 6}, {7, 8}});

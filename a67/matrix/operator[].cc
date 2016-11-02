@@ -2,5 +2,5 @@
 
 double *Matrix::operator[](size_t rowIdx)
 {
-    return operatorIndex(rowIdx);
+    return row(rowIdx);
 }

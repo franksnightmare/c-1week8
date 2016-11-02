@@ -1,2 +1,7 @@
 there are two makefiles, one in each class
 there are main files but they are only there to check if it all compiles
+
+the important files are:
+the header files
+both operator==.cc
+both operator!=.cc
