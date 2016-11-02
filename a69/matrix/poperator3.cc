@@ -1,7 +1,6 @@
 #include "matrix.ih"
 
-Matrix &Matrix::operator()(Mode writeMode)
+Proxy Matrix::operator()(Mode mode, size_t start, size_t parts)
 {
-	d_writeMode = writeMode;
-	return *this;
+	return Proxy(this, start, parts, mode);
 }

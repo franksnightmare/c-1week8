@@ -11,16 +11,29 @@ enum Mode
 	BY_COLUMNS
 };
 
+class Matrix;
+
+class Proxy
+{
+	Matrix *d_matrix;
+	
+	size_t d_start = 0;
+	size_t d_steps = 0;
+	
+	Mode d_mode = BY_ROWS;
+	
+	public:
+		Proxy(Matrix *matrix, size_t start, size_t steps, Mode mode);
+		friend std::istream &operator>>(std::istream &input,
+			Proxy &&temp);
+};
+
 class Matrix
 {
 	size_t d_nRows = 0;
 	size_t d_nCols = 0;
-	size_t d_writeStart = 0;
-	size_t d_writeParts = 0;
 	
 	double *d_data = 0;
-	
-	Mode d_writeMode = BY_ROWS;
 	
 	public:
 		Matrix() = default;
@@ -32,11 +45,13 @@ class Matrix
 		~Matrix();
 		Matrix &operator=(Matrix const &other);
 		Matrix &operator=(Matrix &&other);
-		Matrix &operator()(size_t nRows, size_t nCols);
-		Matrix &operator()(size_t nRows, size_t nCols, Mode writeMode);
-		Matrix &operator()(Mode writeMode);
-		Matrix &operator()(Mode writeMode, size_t writeStart, size_t writeParts);
 		Matrix &tr();
+		
+		Proxy operator()(size_t nRows, size_t nCols, Mode mode = BY_ROWS);
+		Proxy operator()(Mode mode);
+		Proxy operator()(size_t start);
+		Proxy operator()(Mode mode, size_t start);
+		Proxy operator()(Mode mode, size_t start, size_t steps = 0);
 		
 		void swap(Matrix &other);
 		
@@ -57,6 +72,8 @@ class Matrix
 	private:
 };
 
+std::istream &operator>>(std::istream &input,
+	Proxy &&temp);
 std::istream &operator>>(std::istream &input,
 	Matrix &rvalue);
 std::ostream &operator<<(std::ostream &output,

@@ -1,14 +1,8 @@
 #include "matrix.ih"
 
-Matrix &Matrix::operator()(size_t nRows, size_t nCols, Mode writeMode)
+Proxy Matrix::operator()(Mode mode)
 {
-	delete[] d_data;
-	
-	d_nRows = nRows;
-	d_nCols = nCols;
-	d_data = new double[nRows * nCols];
-	d_writeMode = writeMode;
-	d_writeParts = d_writeMode == BY_ROWS ? nRows : nCols;
-	
-	return *this;
+	return Proxy(this, 0,
+		mode == BY_ROWS ? d_nRows : d_nCols,
+		mode);
 }

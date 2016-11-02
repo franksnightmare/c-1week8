@@ -3,6 +3,4 @@
 
 #include "matrix/matrix.h"
 
-void printMatrix(Matrix matrix);
-
 #endif
