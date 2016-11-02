@@ -5,6 +5,7 @@ Matrix::Matrix(initializer_list<initializer_list
 :
 	d_nRows(rows.size()),
 	d_nCols(rows.begin()[0].size()),
+	d_writeEnd(rows.size()),
 	d_data(new double[rows.size()
 		* rows.begin()[0].size()])
 {	

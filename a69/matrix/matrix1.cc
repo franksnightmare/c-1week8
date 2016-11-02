@@ -4,6 +4,7 @@ Matrix::Matrix(size_t nRows, size_t nCols)
 :
 	d_nRows(nRows),
 	d_nCols(nCols),
+	d_writeEnd(nRows),
 	d_data(new double[nRows * nCols])
 {
 	size_t size = nRows * nCols;
