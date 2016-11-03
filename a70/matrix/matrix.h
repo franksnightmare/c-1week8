@@ -23,7 +23,7 @@ class Matrix
 		Matrix &tr();
 		
 		bool operator==(Matrix const &other);
-		bool operator!=(Matrix const &other); 
+		bool operator!=(Matrix const &other);
 		
 		void swap(Matrix &other);
 		

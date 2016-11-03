@@ -1,0 +1,3 @@
+Q:What constructors are potential candidates for 'explicit'?
+
+A:Constructors with only one parameter. They can act like implicit convertors, so to avoid this we should use the keyword "explicit" to allow only explicit conversions.

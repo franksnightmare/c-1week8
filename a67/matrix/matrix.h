@@ -21,8 +21,6 @@ class Matrix
 		~Matrix();
 		Matrix &operator=(Matrix const &other);
 		Matrix &operator=(Matrix &&other);
-		double *operator[](size_t rowIdx);
-		double const *operator[](size_t rowIdx) const;
 		Matrix &tr();
 
 		void swap(Matrix &other);
