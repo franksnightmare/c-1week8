@@ -3,7 +3,7 @@
 
 #include <cstddef>
 #include <initializer_list>
-#include <ostream>
+#include <iostream>
 
 enum Mode
 {
@@ -50,7 +50,6 @@ class Matrix
 		Proxy operator()(size_t nRows, size_t nCols, Mode mode = BY_ROWS);
 		Proxy operator()(Mode mode);
 		Proxy operator()(size_t start);
-		Proxy operator()(Mode mode, size_t start);
 		Proxy operator()(Mode mode, size_t start, size_t steps = 0);
 		
 		void swap(Matrix &other);

@@ -1,6 +1,6 @@
 #include "matrix.ih"
 
-Proxy Matrix::operator()(size_t start)
+Proxy Matrix::operator()(Mode mode, size_t start)
 {
-	return Proxy(this, start, 0, BY_ROWS);
+	return Proxy(this, start, 0, mode);
 }

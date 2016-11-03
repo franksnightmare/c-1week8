@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+
+\usepackage{times}
+\usepackage[english]{babel}
+
+% -----------------------------------------------
+% especially use this for you code
+% -----------------------------------------------
+
+\usepackage{courier}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tabularx}
+\usepackage{graphicx}
+
+\definecolor{Gray}{gray}{0.95}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{language=C++,
+	basicstyle = \normalsize\ttfamily,   % the size and fonts that are used
+	tabsize = 2,                    % sets default tabsize
+	breaklines = true,              % sets automatic line breaking
+	keywordstyle=\color{blue}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{mygreen}\ttfamily,
+	numbers=left,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+}
+
+\begin{document}
+
+\title{Programming in C/C++ \\
+       Exercises set eight: Overloading
+}
+\date{\today}
+\author{Christiaan Steenkist \\
+Diego Ribas Gomes \\
+Jaime Betancor Valado \\
+Remco Bos \\
+}
+
+\maketitle
+
+\section*{The \texttt{Matrix} class}
+We have merged all the different matrices together to form the one true \texttt{Matrix}.
+Here is the header file for that class so we do not have to print it time and time again.
+\lstinputlisting[caption = matrix.ih]{src/matrix/matrix.ih}
+\lstinputlisting[caption = matrix.h]{src/matrix/matrix.h}
+
+\section*{Exercise 67, the index operator}
+We implemented the index operator for the \texttt{Matrix} class.
+It returns a pointer to the first double of a row in the matrix.
+We also made a const variant of this function.
+
+\subsection*{Code listings}
+%\lstinputlisting[caption = operator\verbatim{[]}.cc]{src/matrix/operator[].cc}
+%\lstinputlisting[caption = operator\verbatim{[]}const.cc]{src/matrix/operator[]const.cc}
+
+\section*{Exercise 68, addition operators}
+We implemented the "\texttt{+}" and "\texttt{+=}" operators for our matrix class.
+Matrices can only be added if the dimensions are equal.
+
+\subsection*{Code listings}
+
+\section*{Exercise 69, insertion and extraction}
+We implemented the insertion and extraction for the \texttt{Matrix} class.
+For insertion we used a single function that is used on matrices.
+For extraction we made a matrix function and a proxy function.
+The proxies are made using the overloaded parenthesis operator and the different parenthesis operators give the proxy different settings.
+The main function shows the slightly changed syntax compared to the code in the assignment.
+
+\subsection*{Code listings}
+\lstinputlisting[caption = main.cc]{src/a69/main.cc}
+
+\subsubsection*{Parenthesis operators and Proxy}
+\lstinputlisting[caption = proxy.cc]{src/matrix/proxy.cc}
+\lstinputlisting[caption = poperator1.cc]{src/matrix/poperator1.cc}
+\lstinputlisting[caption = poperator2.cc]{src/matrix/poperator2.cc}
+\lstinputlisting[caption = poperator3.cc]{src/matrix/poperator3.cc}
+\lstinputlisting[caption = poperator3b.cc]{src/matrix/poperator3b.cc}
+
+\subsubsection*{Insertion and extraction}
+\lstinputlisting[caption = inserter.cc]{src/matrix/inserter.cc}
+\lstinputlisting[caption = extractor.cc]{src/matrix/extractor.cc}
+\lstinputlisting[caption = proxyextractor.cc]{src/matrix/proxyextractor.cc}
+
+\section*{Exercise 70, equality and inequality operators}
+We overloaded the "\texttt{==}" and "\texttt{!=}" operators for both the \texttt{Strings} and the \texttt{Matrix} classes.
+
+\subsection*{Code listings}
+\subsubsection*{\texttt{Strings}}
+\lstinputlisting[caption = strings.h]{src/a70/strings/strings.h}
+\lstinputlisting[caption = operator\texttt{==}.cc]{src/a70/strings/operator==.cc}
+\lstinputlisting[caption = operator\texttt{!=}.cc]{src/a70/strings/operator!=.cc}
+
+\subsubsection*{\texttt{Matrix}}
+\lstinputlisting[caption = operator\texttt{==}.cc]{src/matrix/operator==.cc}
+\lstinputlisting[caption = operator\texttt{!=}.cc]{src/matrix/operator!=.cc}
+
+\section*{Exercise 71, explicit constructors}
+What constructors are potential candidates for 'explicit'?
+The answer is constructors with only one parameter.
+They can act like implicit converters, so to avoid this we should use the keyword "explicit" to allow only explicit conversions.
+
+\subsection*{Code listing}
+\lstinputlisting[caption = strings.h]{src/a71/strings.h}
+
+\end{document}
