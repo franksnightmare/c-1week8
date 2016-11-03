@@ -1,6 +1,6 @@
 #include "matrix.ih"
 
-size_t const &Matrix::nCols()
+size_t Matrix::nCols()
 {
 	return d_nCols;
 }
