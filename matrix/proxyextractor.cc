@@ -4,7 +4,8 @@ istream &operator>>(istream &input, Proxy &&pr)
 {	
 	size_t const nRows = pr.d_matrix->nRows();
 	size_t const nCols = pr.d_matrix->nCols();
-	size_t boundary = pr.d_mode == BY_ROWS ? nRows : nCols;
+	size_t boundary = pr.d_mode == BY_ROWS
+		? nRows : nCols;
 	if (pr.d_steps == 0)
 		pr.d_steps = boundary;
 	
@@ -28,7 +29,8 @@ istream &operator>>(istream &input, Proxy &&pr)
 	else
 	{
 		// Column-wise needs a column step and a row step.
-		double *colStart = pr.d_matrix->row(0) + pr.d_start;
+		double *colStart = pr.d_matrix->row(0)
+			+ pr.d_start;
 		double *colEnd = colStart + pr.d_steps;
 		for (double *col = colStart; col != colEnd; ++col)
 		{

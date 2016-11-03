@@ -12,10 +12,11 @@ class Strings
 	
 	public:
 		Strings() = default;
-		//Modified constructors
+		// Modified constructors
+		// with explicit keyword
 		explicit Strings(size_t argc, char **argv);
 		explicit Strings(char **environ);
-		//with explicit keyword
+		
 		Strings(Strings const &other);
 		Strings(Strings &&temp);
 		~Strings();

@@ -1,6 +1,7 @@
 #include "matrix.ih"
 
-Proxy Matrix::operator()(size_t nRows, size_t nCols, Mode mode)
+Proxy Matrix::operator()(size_t nRows, size_t nCols,
+	Mode mode)
 {
 	delete[] d_data;
 	
@@ -9,6 +10,5 @@ Proxy Matrix::operator()(size_t nRows, size_t nCols, Mode mode)
 	d_data = new double[nRows * nCols];
 	
 	return Proxy(this, 0,
-		mode == BY_ROWS ? nRows : nCols,
-		mode);
+		mode == BY_ROWS ? nRows : nCols, mode);
 }

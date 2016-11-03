@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <initializer_list>
+#include <iostream>
 
 // Proxy for exercise 69.
 enum Mode
@@ -24,8 +25,8 @@ class Proxy
 	public:
 		Proxy(Matrix *matrix, size_t start, size_t steps,
 			Mode mode);
-		friend std::istream &operator>>(std::istream &input,
-			Proxy &&temp);
+		friend std::istream &operator>>(
+			std::istream &input, Proxy &&temp);
 };
 
 // Matrix class.
@@ -74,10 +75,10 @@ class Matrix
 		Proxy operator()(Mode mode, size_t start,
 			size_t steps = 0);
 		
-		friend std::istream &operator>>(std::istream &input,
-			Matrix &rvalue);
-		friend std::ostream &operator<<(std::ostream &output,
-			Matrix const &rvalue);
+		friend std::istream &operator>>(
+			std::istream &input, Matrix &rvalue);
+		friend std::ostream &operator<<(
+			std::ostream &output, Matrix const &rvalue);
 		
 		// Exercise 70
 		bool operator==(Matrix const &other);
