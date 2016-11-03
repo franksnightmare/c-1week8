@@ -65,8 +65,9 @@ class Matrix
 		double const *operator[](size_t rowIdx) const;
 		
 		// Exercise 68
-		
-		
+		Matrix operator+(Matrix const &other);
+		Matrix &operator+=(Matrix const &other);
+				
 		// Exercise 69
 		Proxy operator()(size_t nRows, size_t nCols,
 			Mode mode = BY_ROWS);
