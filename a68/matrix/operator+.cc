@@ -9,7 +9,8 @@ Matrix Matrix::operator+(Matrix const &other)
 	}
 
 	Matrix copy(other);
-	for (size_t idx = 0; idx != d_nRows * d_nCols; ++idx)
+	index = d_nRows * d_nCols
+	for (size_t idx = 0; idx != index; ++idx)
 	{
 		copy.d_data[idx] += d_data[idx];
 	}
