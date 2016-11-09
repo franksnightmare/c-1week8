@@ -11,10 +11,8 @@ Matrix operator+(Matrix const &left,
 	}
 
 	Matrix copy(left);
-	index = copy.d_nRows * copy.d_nCols
-	for (size_t idx = 0; idx != index; ++idx)
-	{
+	size_t end = copy.d_nRows * copy.d_nCols
+	for (size_t idx = 0; idx != end; ++idx)
 		copy.d_data[idx] += right.d_data[idx];
-	}
 	return copy;
 }
