@@ -8,7 +8,8 @@ Matrix &Matrix::operator+=(Matrix const &other)
 		return *this;	
 	}
 
-	for (size_t idx = 0; idx != d_nRows * d_nCols; ++idx)
+	index = d_nRows * d_nCols
+	for (size_t idx = 0; idx != index; ++idx)
 	{
 		d_data[idx] += other.d_data[idx];
 	}
