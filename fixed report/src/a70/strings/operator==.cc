@@ -1,17 +1,15 @@
 #include "strings.ih"
 
-bool Strings::operator==(Strings const &rvalue)
+bool operator==(Strings const &left,
+	Strings const &right)
 {
-	if (d_size != rvalue.d_size)
+	if (left.d_size != right.d_size)
 		return false;
 	
-	for (size_t index = 0; index != d_size; ++index)
-	{
-		string lstring = *d_str[index];
-		string rstring = *rvalue.d_str[index];
-		if (lstring.compare(rstring) != 0)
+	for (size_t idx = 0; idx != left.d_size; ++idx)
+		if ((*left.d_str[idx]).compare(
+				*right.d_str[idx]) != 0)
 			return false;
-	}
 	
 	return true;
 }

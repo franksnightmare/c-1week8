@@ -1,6 +1,7 @@
 #include "strings.ih"
 
-bool Strings::operator!=(Strings const &rvalue)
+bool operator!=(Strings const &left,
+	Strings const &right)
 {
-	return !(*this == rvalue);
+	return !(left == right);
 }

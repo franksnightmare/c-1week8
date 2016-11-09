@@ -19,8 +19,10 @@ class Strings
 		~Strings();
 		Strings &operator=(Strings const &rvalue);
 		
-		bool operator==(Strings const &rvalue);
-		bool operator!=(Strings const &rvalue);
+		friend bool operator==(Strings const &left,
+			Strings const &right);
+		friend bool operator!=(Strings const &left,
+			Strings const &right);
 		
 		void swap(Strings &other);
 		
@@ -38,5 +40,10 @@ class Strings
 		
 		std::string **rawPointers(size_t amount);
 };
+
+bool operator==(Strings const &left,
+	Strings const &right);
+bool operator!=(Strings const &left,
+	Strings const &right);
 
 #endif

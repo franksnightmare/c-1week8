@@ -22,8 +22,8 @@ class Matrix
 		Matrix &operator=(Matrix &&other);
 		Matrix &tr();
 		
-		bool operator==(Matrix const &other);
-		bool operator!=(Matrix const &other);
+		friend bool operator==(Matrix const &left, Matrix const &right);
+		friend bool operator!=(Matrix const &left, Matrix const &right);
 		
 		void swap(Matrix &other);
 		
@@ -36,5 +36,8 @@ class Matrix
 	
 	private:
 };
+
+bool operator==(Matrix const &left, Matrix const &right);
+bool operator!=(Matrix const &left, Matrix const &right);
 
 #endif
