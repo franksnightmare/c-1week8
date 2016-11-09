@@ -5,7 +5,7 @@ Matrix Matrix::operator+(Matrix const &left, Matrix const &right)
 	if (left.d_nRows != right.d_nRows || left.d_nCols != right.d_nCols)
 	{
 		cerr << "Matrices must have the same size.";
-		return *this;	
+		return *left;	
 	}
 
 	Matrix copy(right);
