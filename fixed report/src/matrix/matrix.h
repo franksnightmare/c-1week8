@@ -82,8 +82,10 @@ class Matrix
 			std::ostream &output, Matrix const &rvalue);
 		
 		// Exercise 70
-		bool operator==(Matrix const &other);
-		bool operator!=(Matrix const &other);
+		friend bool operator==(Matrix const &left,
+			Matrix const &right);
+		friend bool operator!=(Matrix const &left,
+			Matrix const &right);
 	
 	private:
 };
@@ -95,5 +97,9 @@ std::istream &operator>>(std::istream &input,
 	Matrix &rvalue);
 std::ostream &operator<<(std::ostream &output,
 	Matrix const &rvalue);
+
+// Exercise 70
+bool operator==(Matrix const &left, Matrix const &right);
+bool operator!=(Matrix const &left, Matrix const &right);
 
 #endif

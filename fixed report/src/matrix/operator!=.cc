@@ -1,6 +1,6 @@
 #include "matrix.ih"
 
-bool Matrix::operator!=(Matrix const &rvalue)
+bool operator!=(Matrix const &left, Matrix const &right)
 {
-	return !(*this == rvalue);
+	return !(left == right);
 }
