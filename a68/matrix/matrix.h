@@ -98,6 +98,10 @@ std::istream &operator>>(std::istream &input,
 std::ostream &operator<<(std::ostream &output,
 	Matrix const &rvalue);
 
+// Exercise 68
+Matrix operator+(Matrix const &left, Matrix const &right);
+Matrix &operator+=(Matrix const &left, Matrix const &right);
+
 // Exercise 70
 bool operator==(Matrix const &left, Matrix const &right);
 bool operator!=(Matrix const &left, Matrix const &right);
