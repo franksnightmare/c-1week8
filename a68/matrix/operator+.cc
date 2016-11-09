@@ -1,18 +1,18 @@
 #include "matrix.ih"
 
-Matrix Matrix::operator+(Matrix const &other)
+Matrix Matrix::operator+(Matrix const &left, Matrix const &right)
 {
-	if (d_nRows != other.d_nRows || d_nCols != other.d_nCols)
+	if (left.d_nRows != right.d_nRows || left.d_nCols != right.d_nCols)
 	{
 		cerr << "Matrices must have the same size.";
 		return *this;	
 	}
 
-	Matrix copy(other);
-	index = d_nRows * d_nCols
+	Matrix copy(right);
+	index = copy.d_nRows * copy.d_nCols
 	for (size_t idx = 0; idx != index; ++idx)
 	{
-		copy.d_data[idx] += d_data[idx];
+		copy.d_data[idx] += left.d_data[idx];
 	}
 	return copy;
 }
