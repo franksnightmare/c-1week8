@@ -65,7 +65,7 @@ class Matrix
 		double const *operator[](size_t rowIdx) const;
 		
 		// Exercise 68
-		Matrix operator+(Matrix const &other);
+		friend Matrix operator+(Matrix const &left, Matrix const &right);
 		Matrix &operator+=(Matrix const &other);
 				
 		// Exercise 69
@@ -97,6 +97,9 @@ std::istream &operator>>(std::istream &input,
 	Matrix &rvalue);
 std::ostream &operator<<(std::ostream &output,
 	Matrix const &rvalue);
+
+// Exercise 68
+Matrix operator+(Matrix const &left, Matrix const &right);
 
 // Exercise 70
 bool operator==(Matrix const &left, Matrix const &right);

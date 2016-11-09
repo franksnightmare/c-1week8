@@ -8,9 +8,9 @@ Matrix &Matrix::operator+=(Matrix const &other)
 		cerr << "Matrices must have the same size.";
 		return *this;	
 	}
-
-	for (size_t idx = 0; idx != d_nRows * d_nCols;
-		++idx)
+	
+	size_t end = d_nRows * d_nCols;
+	for (size_t idx = 0; idx != end; ++idx)
 		d_data[idx] += other.d_data[idx];
 	return *this;
 }
