@@ -1,18 +1,17 @@
 #include "matrix.ih"
 
-bool Matrix::operator==(Matrix const &rvalue)
+bool operator==(Matrix const &left,
+	Matrix const &right)
 {
-	if (d_nRows != rvalue.d_nRows)
-		return false;
-	if (d_nCols != rvalue.d_nCols)
+	if (left.d_nRows != right.d_nRows
+			|| left.d_nCols != right.d_nCols)
 		return false;
 	
-	for (size_t index = 0; index != d_nRows * d_nCols;
-		++index)
-	{
-		if (d_data[index] != rvalue.d_data[index])
+	size_t end = left.d_nRows * left.d_nCols;
+	for (size_t index = 0; index != end;
+			++index)
+		if (left.d_data[index] != right.d_data[index])
 			return false;
-	}
 	
 	return true;
 }

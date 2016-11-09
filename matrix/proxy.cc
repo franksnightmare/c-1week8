@@ -1,11 +1,7 @@
 #include "matrix.ih"
 
-Proxy::Proxy(Matrix *matrix, size_t start,
-	size_t steps, Mode mode)
+Proxy::Proxy(Matrix *matrix)
 :
-	d_matrix(matrix),
-	d_start(start),
-	d_steps(steps),
-	d_mode(mode)
+	d_matrix(matrix)
 {
 }

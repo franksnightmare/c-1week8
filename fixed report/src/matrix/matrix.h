@@ -13,9 +13,12 @@ enum Mode
 };
 
 class Matrix;
-class Proxy
+class MatExtractProxy
 {
-	Matrix *d_matrix;
+	size_t d_nRows = 0;
+	size_t d_nCols = 0;
+	
+	double *d_data = 0;
 	
 	size_t d_start = 0;
 	size_t d_steps = 0; // 0 means all
@@ -23,10 +26,15 @@ class Proxy
 	Mode d_mode = BY_ROWS;
 	
 	public:
-		Proxy(Matrix *matrix, size_t start, size_t steps,
+		MatExtractProxy(size_t nRows, size_t nCols,
+			double *d_data, size_t start, size_t steps,
 			Mode mode);
+		
+		std::istream rowExtractor(std::istream &input);
+		std::istream columnExtractor(std::istream &input);
+		
 		friend std::istream &operator>>(
-			std::istream &input, Proxy &&temp);
+			std::istream &input, MatExtractProxy &&temp);
 };
 
 // Matrix class.
@@ -65,16 +73,17 @@ class Matrix
 		double const *operator[](size_t rowIdx) const;
 		
 		// Exercise 68
-		friend Matrix operator+(Matrix const &left, Matrix const &right);
+		friend Matrix operator+(Matrix const &left,
+			Matrix const &right);
 		Matrix &operator+=(Matrix const &other);
 				
 		// Exercise 69
-		Proxy operator()(size_t nRows, size_t nCols,
-			Mode mode = BY_ROWS);
-		Proxy operator()(Mode mode);
-		Proxy operator()(size_t start);
-		Proxy operator()(Mode mode, size_t start,
-			size_t steps = 0);
+		MatExtractProxy operator()(size_t nRows,
+			size_t nCols, Mode mode = BY_ROWS);
+		MatExtractProxy operator()(Mode mode);
+		MatExtractProxy operator()(size_t start);
+		MatExtractProxy operator()(Mode mode,
+			size_t start, size_t steps = 0);
 		
 		friend std::istream &operator>>(
 			std::istream &input, Matrix &rvalue);
@@ -92,17 +101,20 @@ class Matrix
 
 // Stream operators for exercise 69.
 std::istream &operator>>(std::istream &input,
-	Proxy &&temp);
+	MatExtractProxy &&temp);
 std::istream &operator>>(std::istream &input,
 	Matrix &rvalue);
 std::ostream &operator<<(std::ostream &output,
 	Matrix const &rvalue);
 
 // Exercise 68
-Matrix operator+(Matrix const &left, Matrix const &right);
+Matrix operator+(Matrix const &left,
+	Matrix const &right);
 
 // Exercise 70
-bool operator==(Matrix const &left, Matrix const &right);
-bool operator!=(Matrix const &left, Matrix const &right);
+bool operator==(Matrix const &left,
+	Matrix const &right);
+bool operator!=(Matrix const &left,
+	Matrix const &right);
 
 #endif
