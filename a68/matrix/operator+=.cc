@@ -1,17 +1,17 @@
 #include "matrix.ih"
 
-Matrix &Matrix::operator+=(Matrix const &other)
+Matrix &Matrix::operator+=(Matrix &left, Matrix const &right)
 {
-	if (d_nRows != other.d_nRows || d_nCols != other.d_nCols)
+	if (left.d_nRows != right.d_nRows || left.d_nCols != right.d_nCols)
 	{
 		cerr << "Matrices must have the same size.";
-		return *this;	
+		return *left;	
 	}
 
-	index = d_nRows * d_nCols
+	index = left.d_nRows * left.d_nCols
 	for (size_t idx = 0; idx != index; ++idx)
 	{
-		d_data[idx] += other.d_data[idx];
+		left.d_data[idx] += right.d_data[idx];
 	}
-	return *this;
+	return *left;
 }
